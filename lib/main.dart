@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'country.dart';
+import 'country_detail.dart';
 
 void main() {
   runApp(CurrencyX());
@@ -24,7 +25,7 @@ class CurrencyX extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
+  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -38,7 +39,7 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  State createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -57,11 +58,12 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) {
-                    return Text('Detail Page');
-                  }
-                  )
+                    return CountryDetail(country: Country.samples[index]);
+                  },
+                  ),
                 );
               },
+              child: buildCountryCard(Country.samples[index]),
             );
           },
         ),
@@ -71,36 +73,38 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget buildCountryCard(Country country) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 0),
+      padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 5.0),
       child: SizedBox(
-        height: 250,
+        height: 75,
         child: Card(
           elevation: 4.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
           color: Colors.grey[300],
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: <Widget>[
-                Image(
-                  image: AssetImage(country.flagImageUrl),
-                  height: 160,
-                ),
-                const SizedBox(
-                  height: 4.0,
-                ),
-                Text(
-                  country.countryLabel,
-                  style: const TextStyle(
-                    fontSize: 28.0,
-                    fontWeight: FontWeight.w700,
-                    fontFamily: 'Roboto',
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage(country.flagImageUrl),
+                      ),
                   ),
-                ),
-              ],
-            ),
+                  Text(
+                    country.countryLabel,
+                    style: const TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Roboto',
+                    ),
+                  ),
+                ],
+
+              ),
+            ],
           ),
         ),
       ),

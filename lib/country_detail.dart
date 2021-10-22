@@ -27,7 +27,7 @@ class _CountryDetailState extends State<CountryDetail> {
         child: Column(
           children: <Widget>[
             SizedBox(
-              height: 300,
+              height: 100,
               width: double.infinity,
               child: Image(
                 image: AssetImage(widget.country.flagImageUrl),
