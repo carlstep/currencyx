@@ -77,11 +77,11 @@ class _MyHomePageState extends State<MyHomePage> {
       child: SizedBox(
         height: 75,
         child: Card(
-          elevation: 4.0,
+          elevation: 2.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(15.0),
           ),
-          color: Colors.grey[300],
+          color: Colors.grey[100],
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -96,8 +96,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   Text(
                     country.countryLabel,
                     style: const TextStyle(
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.w700,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w500,
                       fontFamily: 'Roboto',
                     ),
                   ),

@@ -24,23 +24,25 @@ class _CountryDetailState extends State<CountryDetail> {
         title: Text(widget.country.countryLabel),
       ),
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 100,
-              width: double.infinity,
-              child: Image(
-                image: AssetImage(widget.country.flagImageUrl),
+        child: Card(
+          child: Column(
+            children: <Widget>[
+              SizedBox(
+                height: 100,
+                width: double.infinity,
+                child: Image(
+                  image: AssetImage(widget.country.flagImageUrl),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 4,
-            ),
-            Text(
-              widget.country.countryLabel,
-              style: const TextStyle(fontSize: 18),
-            ),
-          ],
+              const SizedBox(
+                height: 4,
+              ),
+              Text(
+                widget.country.countryLabel,
+                style: const TextStyle(fontSize: 18),
+              ),
+            ],
+          ),
         ),
       ),
     );
