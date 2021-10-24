@@ -16,6 +16,7 @@ class CountryDetail extends StatefulWidget {
 }
 
 class _CountryDetailState extends State<CountryDetail> {
+  int _sliderVal = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class _CountryDetailState extends State<CountryDetail> {
               SizedBox(
                 height: 50,
                 child: Text(
-                  '${widget.country.amount}',
+                  '${widget.country.amount * _sliderVal}',
                   style: const TextStyle(fontSize: 30.0),
                 ),
               ),
@@ -64,7 +65,7 @@ class _CountryDetailState extends State<CountryDetail> {
                                 SizedBox(
                                   width: 40.0,
                                 ),
-                                Text('${currencyFx.exRate}',
+                                Text('${currencyFx.exRate * _sliderVal}',
                                 style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w300),),
                               ],
                             ),
@@ -73,6 +74,20 @@ class _CountryDetailState extends State<CountryDetail> {
                       );
                     },
               ),
+              ),
+              Slider(
+                min: 0,
+                max: 1000,
+                divisions: 100,
+                label: '${_sliderVal * widget.country.amount} amount',
+                value: _sliderVal.toDouble(),
+                onChanged: (newValue){
+                  setState(() {
+                    _sliderVal = newValue.round();
+                  });
+                },
+                activeColor: Colors.green,
+                inactiveColor: Colors.black,
               )
             ],
           ),
