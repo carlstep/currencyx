@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'country.dart';
 
+
 class CountryDetail extends StatefulWidget {
   final Country country;
 
@@ -65,7 +66,7 @@ class _CountryDetailState extends State<CountryDetail> {
                                 SizedBox(
                                   width: 40.0,
                                 ),
-                                Text('${currencyFx.exRate * _sliderVal}',
+                                Text((currencyFx.exRate * _sliderVal).toStringAsFixed(3),
                                 style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w300),),
                               ],
                             ),
@@ -79,7 +80,7 @@ class _CountryDetailState extends State<CountryDetail> {
                 min: 0,
                 max: 1000,
                 divisions: 100,
-                label: '${_sliderVal * widget.country.amount} amount',
+                label: '${_sliderVal * widget.country.amount}',
                 value: _sliderVal.toDouble(),
                 onChanged: (newValue){
                   setState(() {
